@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * @description:
+ * @description:日志系统
  * @author : 00222 [liu.yang@unisinsight.com]
  * @date : 2019/3/19 10:02
  * @since: 1.0
