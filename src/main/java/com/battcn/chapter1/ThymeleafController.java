@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Controller
-@RequestMapping
+@RequestMapping("/hello/world")
 public class ThymeleafController {
 
     @GetMapping("/index")

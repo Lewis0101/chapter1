@@ -33,6 +33,7 @@ public class PropertiesController {
 
     @GetMapping("/1")
     public MyProperties1 myProperties1(){
+        //将信息打印在控制台上
         log.info("=================================================================================================");
         log.info(myProperties1.toString());
         log.info("=================================================================================================");
@@ -42,6 +43,7 @@ public class PropertiesController {
 
     @GetMapping("2")
     public MyProperties2 myProperties2() {
+        //将信息打印在控制台上
         log.info("=================================================================================================");
         log.info(myProperties2.toString());
         log.info("=================================================================================================");
