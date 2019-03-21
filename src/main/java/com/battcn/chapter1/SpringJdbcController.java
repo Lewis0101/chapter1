@@ -1,10 +1,5 @@
 package com.battcn.chapter1;
 
-import com.sun.javafx.binding.Logging;
-
-import org.hibernate.validator.internal.util.logging.Log;
-import org.hibernate.validator.internal.util.logging.Log_$logger;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 /**
  * @author : 00222 [liu.yang@unisinsight.com]
  * @description:Springboot的JDBC
@@ -30,48 +27,62 @@ import java.util.List;
 //需要重新配置mysql文件  否则连接不上JdbcTemplate
 @RestController
 @RequestMapping("/users")
-public class SpringJdbcController implements InitializingBean {
+public class SpringJdbcController  {
+
+    @Resource
+    private UserMapper userMapper;
 
     @Autowired
     private  JdbcTemplate jdbcTemplate;
 
+
     @GetMapping
-    public List<User> queryUsers(){
+    public List<Video> queryUsers(){
         //查询所有用户
-        String sql = "select * from t_user";
-        return jdbcTemplate.query(sql,new Object[]{},new BeanPropertyRowMapper<>(User.class));
+        String sql = "select * from video_info";
+        return jdbcTemplate.query(sql,new Object[]{},new BeanPropertyRowMapper<>(Video.class));
     }
 
-    @GetMapping("/{id}")
-    public  User getUser(@PathVariable Long id){
+    @GetMapping("{video_id}")
+    public Video getUser(@PathVariable String  video_id){
         //根据主键ID查询
-        String sql = "select * from t_user where id = ?";
-        return jdbcTemplate.queryForObject(sql,new Object[]{id},new BeanPropertyRowMapper<>(User.class));
+        String sql = "select * from video_info where video_id = ?";
+        return jdbcTemplate.queryForObject(sql,new Object[]{video_id},new BeanPropertyRowMapper<>(Video.class));
     }
 
     @DeleteMapping ("/{id}")
     public int delUser(@PathVariable Long id){
         //根据主键ID删除用户信息
-        String sql = "DELETE FROM t_user WHERE id = ?";
+        String sql = "DELETE FROM video_info WHERE id = ?";
         return jdbcTemplate.update(sql,id);
     }
 
     @PostMapping
-    public int addUser(@RequestBody User user){
+    public int addUser(@RequestBody Video user){
         //添加用户
-        String sql = "insert into t_user(username,password) values(?,?))";
-        return jdbcTemplate.update(sql,user.getUsername(),user.getPassword());
+        String sql = "insert into video_info(device_id,video_id) values(?,?))";
+        return jdbcTemplate.update(sql,user.getDeviceId(),user.getVideoId());
     }
 
     @PutMapping("/{id}")
-    public  int editUser(@PathVariable Long id,@RequestBody User user){
+    public  int editUser(@PathVariable Long id,@RequestBody Video user){
         //根据主键ID修改用户信息
-        String sql = "UPDATE t_user SET username = ? ,password = ? WHERE id = ?";
-        return jdbcTemplate.update(sql,user.getUsername(),user.getPassword(),id);
+        String sql = "UPDATE video_info SET device_id = ? ,video_id = ? WHERE id = ?";
+        return jdbcTemplate.update(sql,user.getDeviceId(),user.getVideoId(),id);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println();
+    //测试mapper
+    @GetMapping("/mapper")
+    public List<Video> mapper(){
+        return userMapper.getVideoInfo();
     }
+
+    //测试mapper1
+    @GetMapping("/mapper1")
+    public List<Video> mapper1(){
+
+        return userMapper.getVideoInfo1();
+    }
+
+
 }
