@@ -1,4 +1,6 @@
-package com.battcn.chapter1;
+package com.battcn.chapter1.Mapper;
+
+import com.battcn.chapter1.responseDTO.Video;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

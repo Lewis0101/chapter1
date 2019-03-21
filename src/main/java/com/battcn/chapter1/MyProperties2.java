@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "my2")
 public class MyProperties2 {
 
-    private int age;
-    private String name;
-    private String email;
+    public int age;
+    public String name;
+    public String email;
 
     public int getAge() {
         return age;

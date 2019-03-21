@@ -1,4 +1,4 @@
-package com.battcn.chapter1;
+package com.battcn.chapter1.responseDTO;
 
 import java.io.Serializable;
 

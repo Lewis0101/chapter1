@@ -1,4 +1,4 @@
-package com.battcn.chapter1;
+package com.battcn.chapter1.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

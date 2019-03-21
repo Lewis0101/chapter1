@@ -4,7 +4,6 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PropertiesController {
 
-    private static final Logger log = LoggerFactory.getLogger(PropertiesController.class);
+    public static final Logger log = LoggerFactory.getLogger(PropertiesController.class);
 
-    private final MyProperties1 myProperties1;
-    private final MyProperties2 myProperties2;
+    public final MyProperties1 myProperties1;
+    public final MyProperties2 myProperties2;
 
     @Autowired
     public PropertiesController(MyProperties1 myProperties1, MyProperties2 myProperties2, MyProperties2 myProperties21, MyProperties2 myProperties22) {

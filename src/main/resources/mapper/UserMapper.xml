@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.battcn.mapper.UserMapper">
 
-    <resultMap id="baseResultMap" type="com.battcn.chapter1.Video">
+    <resultMap id="baseResultMap" type="com.battcn.chapter1.responseDTO.Video">
         <result column="video_id" jdbcType="VARCHAR" property="videoId" />
         <result column="video_name" jdbcType="VARCHAR" property="videoName" />
         <result column="file_format" jdbcType="VARCHAR" property="fileFormat" />
@@ -10,7 +10,7 @@
         <result column="device_id" jdbcType="VARCHAR" property="deviceId"></result>
     </resultMap>
 
-    <insert id="insert" parameterType="com.battcn.chapter1.Video">
+    <insert id="insert" parameterType="com.battcn.chapter1.responseDTO.Video">
     INSERT INTO `video_info`(`video_id`,`device_id`) VALUES (#{videoId},#{deviceId})
   </insert>
 

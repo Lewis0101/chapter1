@@ -1,4 +1,7 @@
-package com.battcn.chapter1;
+package com.battcn.chapter1.Controller;
+
+import com.battcn.chapter1.Mapper.UserMapper;
+import com.battcn.chapter1.responseDTO.Video;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
